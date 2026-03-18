@@ -1,0 +1,19 @@
+{
+    "metadata": {
+        "version": "1.0",
+        "timestamp": "2026-03-18T10:30:21.814547",
+        "tool": "uv-prefetch-poc",
+        "description": "Software Bill of Materials for prefetched dependencies"
+    },
+    "packages": [
+        {
+            "name": "six",
+            "version": "1.16.0",
+            "dependencies": [],
+            "hashes": [
+                "sha256:8abb2f1d8686cd96738b3dbef81f08e779c9ad4d40455675c1a17f66886da2ce"
+            ],
+            "summary": "six==1.16.0 fetched to local cache."
+        }
+    ]
+}
