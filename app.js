@@ -74,7 +74,21 @@
 
     loadExampleBtn.addEventListener('click', loadExampleLockfile);
 
+    // --- Environment Check ---
+    const isGitHubPages = window.location.hostname.includes('github.io');
+    if (isGitHubPages) {
+        console.log('Running in GitHub Pages Demo Mode');
+        connectionStatus.innerHTML = `
+            <span class="status-dot" style="background: var(--accent-blue)"></span>
+            Demo Mode (UI Only)
+        `;
+    }
+
     async function handleFileUpload(file) {
+        if (isGitHubPages) {
+            alert('File upload requires a running Python backend. Try "Load Example Lockfile" to see the UI in action!');
+            return;
+        }
         const formData = new FormData();
         formData.append('lockfile', file);
 
@@ -106,6 +120,25 @@
         const uploadText = uploadZone.querySelector('.upload-text');
         uploadText.innerHTML = '<span class="spinner" style="display:inline-block; margin-right: 8px;"></span> Loading example lockfile...';
         uploadZone.classList.add('success');
+
+        if (isGitHubPages) {
+            // Mock the parsing for GitHub Pages Demo Mode
+            setTimeout(() => {
+                packages = [{
+                    name: 'six',
+                    version: '1.16.0',
+                    source: { registry: 'https://pypi.org/simple' },
+                    hashes: ['sha256:8abb2f1d8686cd96738b3dbef81f08e779c9ad4d40455675c1a17f66886da2ce']
+                }];
+                uploadText.textContent = `✓ Example lockfile loaded — 1 packages found (Demo Mode)`;
+                renderPackages(packages);
+                showStats(packages);
+                
+                // Show a helpful tip
+                addConsoleLine(new Date().toLocaleTimeString(), 'Running in UI Demo Mode. To perform real prefetching, follow the instructions in README.md to run the Python backend locally.', 'info');
+            }, 800);
+            return;
+        }
 
         try {
             // Read the example lockfile content
