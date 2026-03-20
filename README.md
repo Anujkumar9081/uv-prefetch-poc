@@ -15,8 +15,30 @@ This project demonstrates a secure, reproducible, and network-isolated workflow 
 - **Artifact Prefetching**: Downloads required wheels or source distributions.
 - **Integrity Verification**: Comprehensive SHA256 checksum validation.
 - **Lightweight SBOM**: Generates a JSON-based Software Bill of Materials.
+- **Web Dashboard**: Beautiful dark-themed UI for interactive prefetching with real-time progress.
 
-## Installation & Usage
+## Web Dashboard
+
+### Quick Start
+
+```bash
+# Install dependencies
+pip install -r api/requirements.txt
+
+# Start the web server
+python3 api/app.py
+```
+
+Then open **http://localhost:8080** in your browser.
+
+### Features
+- **Drag & drop** `uv.lock` file upload (or use the example lockfile)
+- **Real-time SSE console** showing download progress
+- **Packages table** with status badges
+- **SBOM viewer** with JSON syntax highlighting
+- **Cached artifacts** grid
+
+## CLI Usage
 
 ### Prerequisites
 - Python 3.11+ (uses native `tomllib`)
@@ -37,7 +59,9 @@ uv pip install --offline --find-links ./cache -r requirements.txt
 
 ## Project Structure
 
-- `src/`: Core implementation logic.
+- `src/`: Core implementation logic (parser, downloader, SBOM generator).
+- `api/`: Flask REST API wrapping the core modules.
+- `frontend/`: Web dashboard (HTML + CSS + JS).
 - `example/`: Sample project configuration for testing.
 
 ---

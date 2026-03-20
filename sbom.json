@@ -1,7 +1,7 @@
 {
     "metadata": {
         "version": "1.0",
-        "timestamp": "2026-03-18T10:30:21.814547",
+        "timestamp": "2026-03-21T03:14:04.734863",
         "tool": "uv-prefetch-poc",
         "description": "Software Bill of Materials for prefetched dependencies"
     },
