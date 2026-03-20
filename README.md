@@ -2,6 +2,10 @@
 
 A proof-of-concept for offline dependency prefetching based on the `uv` lockfile format.
 
+**Links:**
+- **Live UI Demo**: [https://anujkumar9081.github.io/uv-prefetch-poc/](https://anujkumar9081.github.io/uv-prefetch-poc/) (Frontend preview)
+- **GitHub Repository**: [https://github.com/Anujkumar9081/uv-prefetch-poc](https://github.com/Anujkumar9081/uv-prefetch-poc) (Full-stack source code)
+
 ## Overview
 
 This project demonstrates a secure, reproducible, and network-isolated workflow for Python dependency management. By resolving and prefetching artifacts *before* the execution phase, we ensure that:
